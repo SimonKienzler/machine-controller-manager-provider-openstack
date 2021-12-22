@@ -5,9 +5,11 @@
 package client
 
 import (
+	"github.com/gophercloud/gophercloud/openstack/blockstorage/v2/volumes"
 	"github.com/gophercloud/gophercloud/openstack/compute/v2/servers"
 	"github.com/gophercloud/gophercloud/openstack/networking/v2/ports"
 	"github.com/gophercloud/gophercloud/openstack/networking/v2/subnets"
+	"github.com/gophercloud/gophercloud/openstack/utils"
 )
 
 // Compute is an interface for communication with Nova service.
@@ -27,6 +29,9 @@ type Compute interface {
 	FlavorIDFromName(name string) (string, error)
 	// ImageIDFromName resolves the given image name to a unique ID.
 	ImageIDFromName(name string) (string, error)
+
+	// GetMicroversion returns the OpenStack Nova version.
+	GetMicroversion() (utils.Version, error)
 }
 
 // Network is an interface for communication with Neutron service.
@@ -51,4 +56,22 @@ type Network interface {
 	PortIDFromName(name string) (string, error)
 	// TagPort tags a port with the specified labels.
 	TagPort(id string, tags []string) error
+}
+
+// Storage is an interface for communication with Cinder service.
+type Storage interface {
+	// GetVolume fetches the volume data from the supplied ID.
+	GetVolume(id string) (*volumes.Volume, error)
+
+	// CreateVolume creates a volume.
+	CreateVolume(opts volumes.CreateOptsBuilder) (*volumes.Volume, error)
+	// ListVolumes lists all volumes.
+	ListVolumes(opts volumes.ListOptsBuilder) ([]volumes.Volume, error)
+	// UpdateVolume updates the volume from the supplied id.
+	UpdateVolume(id string, opts volumes.UpdateOptsBuilder) (*volumes.Volume, error)
+	// DeleteVolume deletes the volume from the supplied id.
+	DeleteVolume(id string, opts volumes.DeleteOptsBuilder) error
+
+	// VolumeIDFromName resolves the given volume name to a unique ID.
+	VolumeIDFromName(name string) (string, error)
 }

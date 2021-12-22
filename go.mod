@@ -24,6 +24,7 @@ require (
 
 replace (
 	github.com/gardener/gardener-resource-manager/api => github.com/gardener/gardener-resource-manager/api v0.25.0
+	github.com/gardener/machine-controller-manager => github.com/SimonKienzler/machine-controller-manager v0.42.1-0.20211222124641-f525aa761c45
 	k8s.io/api => k8s.io/api v0.20.6
 	k8s.io/apimachinery => k8s.io/apimachinery v0.20.6
 	k8s.io/client-go => k8s.io/client-go v0.20.6

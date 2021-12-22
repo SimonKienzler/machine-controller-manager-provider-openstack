@@ -54,7 +54,7 @@ github.com/fsnotify/fsnotify
 github.com/gardener/gardener/hack
 github.com/gardener/gardener/hack/.ci
 github.com/gardener/gardener/hack/api-reference/template
-# github.com/gardener/machine-controller-manager v0.42.0
+# github.com/gardener/machine-controller-manager v0.42.0 => github.com/SimonKienzler/machine-controller-manager v0.42.1-0.20211222124641-f525aa761c45
 ## explicit
 github.com/gardener/machine-controller-manager/pkg/apis/machine
 github.com/gardener/machine-controller-manager/pkg/apis/machine/v1alpha1
@@ -224,6 +224,7 @@ github.com/googleapis/gnostic/openapiv2
 ## explicit
 github.com/gophercloud/gophercloud
 github.com/gophercloud/gophercloud/openstack
+github.com/gophercloud/gophercloud/openstack/blockstorage/v2/volumes
 github.com/gophercloud/gophercloud/openstack/compute/v2/extensions/bootfromvolume
 github.com/gophercloud/gophercloud/openstack/compute/v2/extensions/keypairs
 github.com/gophercloud/gophercloud/openstack/compute/v2/extensions/schedulerhints
@@ -249,6 +250,7 @@ github.com/gophercloud/utils/client
 github.com/gophercloud/utils/env
 github.com/gophercloud/utils/gnocchi
 github.com/gophercloud/utils/internal
+github.com/gophercloud/utils/openstack/blockstorage/v2/volumes
 github.com/gophercloud/utils/openstack/clientconfig
 github.com/gophercloud/utils/openstack/compute/v2/flavors
 github.com/gophercloud/utils/openstack/imageservice/v2/images
@@ -951,6 +953,7 @@ sigs.k8s.io/structured-merge-diff/v4/value
 # sigs.k8s.io/yaml v1.2.0
 sigs.k8s.io/yaml
 # github.com/gardener/gardener-resource-manager/api => github.com/gardener/gardener-resource-manager/api v0.25.0
+# github.com/gardener/machine-controller-manager => github.com/SimonKienzler/machine-controller-manager v0.42.1-0.20211222124641-f525aa761c45
 # k8s.io/api => k8s.io/api v0.20.6
 # k8s.io/apimachinery => k8s.io/apimachinery v0.20.6
 # k8s.io/client-go => k8s.io/client-go v0.20.6

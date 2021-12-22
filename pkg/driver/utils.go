@@ -79,6 +79,7 @@ func migrateMachineClass(os *mcmv1alpha1.OpenStackMachineClass, machineClass *mc
 			UseConfigDrive:   os.Spec.UseConfigDrive,
 			ServerGroupID:    os.Spec.ServerGroupID,
 			Networks:         migratedNetworks,
+			VolumeType:       &os.Spec.VolumeType,
 		},
 	}
 

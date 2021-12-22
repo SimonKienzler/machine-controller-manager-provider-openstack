@@ -12,6 +12,7 @@ import (
 	"github.com/gophercloud/gophercloud/openstack"
 	"github.com/gophercloud/gophercloud/openstack/compute/v2/extensions/bootfromvolume"
 	"github.com/gophercloud/gophercloud/openstack/compute/v2/servers"
+	"github.com/gophercloud/gophercloud/openstack/utils"
 	"github.com/gophercloud/utils/openstack/compute/v2/flavors"
 	"github.com/gophercloud/utils/openstack/imageservice/v2/images"
 	"github.com/prometheus/client_golang/prometheus"
@@ -139,4 +140,15 @@ func (c *novaV2) FlavorIDFromName(name string) (string, error) {
 	}
 
 	return id, nil
+}
+
+// GetMicroversion returns the OpenStack Nova version.
+func (c *novaV2) GetMicroversion() (utils.Version, error) {
+	versions := []*utils.Version{}
+	highest, _, err := utils.ChooseVersion(c.serviceClient.ProviderClient, versions)
+	if err != nil {
+		metrics.APIFailedRequestCount.With(prometheus.Labels{"provider": "openstack", "service": "nova"}).Inc()
+		return *highest, err
+	}
+	return *highest, nil
 }

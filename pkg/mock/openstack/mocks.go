@@ -16,6 +16,7 @@ import (
 	servers "github.com/gophercloud/gophercloud/openstack/compute/v2/servers"
 	ports "github.com/gophercloud/gophercloud/openstack/networking/v2/ports"
 	subnets "github.com/gophercloud/gophercloud/openstack/networking/v2/subnets"
+	utils "github.com/gophercloud/gophercloud/openstack/utils"
 )
 
 // MockCompute is a mock of Compute interface.
@@ -98,6 +99,21 @@ func (m *MockCompute) FlavorIDFromName(arg0 string) (string, error) {
 func (mr *MockComputeMockRecorder) FlavorIDFromName(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FlavorIDFromName", reflect.TypeOf((*MockCompute)(nil).FlavorIDFromName), arg0)
+}
+
+// GetMicroversion mocks base method.
+func (m *MockCompute) GetMicroversion() (utils.Version, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "GetMicroversion")
+	ret0, _ := ret[0].(utils.Version)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetMicroversion indicates an expected call of GetMicroversion.
+func (mr *MockComputeMockRecorder) GetMicroversion() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetMicroversion", reflect.TypeOf((*MockCompute)(nil).GetMicroversion))
 }
 
 // GetServer mocks base method.
